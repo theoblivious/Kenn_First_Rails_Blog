@@ -4,8 +4,10 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+
+    @posts = Post.ordered_first_10 #includes(:published_at).order("published_at.created_at desc")
   end
+
 
   # GET /posts/1
   # GET /posts/1.json
@@ -62,13 +64,13 @@ class PostsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @post = Post.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_post
+    @post = Post.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def post_params
-      params.require(:post).permit(:subject, :string, :body, :published_at, :time, :draft_status)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def post_params
+    params.require(:post).permit(:subject, :string, :body, :published_at, :time, :draft_status)
+  end
 end
