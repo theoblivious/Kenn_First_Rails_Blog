@@ -2,18 +2,14 @@
 <h2> Search </h2>
 
 <%= form_tag search_posts_path, method: :get do %>
-<p>
-
-<%= text_field_tag :title ,nil,  size: 30, placeholder: "title" %>
-
-</p>
-
-<p>
-<%= submit_tag "Search_dat" %>
-
+  <p>
+    <%= text_field_tag :q ,nil,  size: 30, placeholder: "Search For" %>
+  </p>
+  <p>
+    <%= submit_tag "Search_dat" %>
   </p>
 <%end%>
-
+<!-- the above can be a partial and then passed into for the index.html or any pages you want to add in the partial to.  -->
 <table>
   <thead>
     <tr>

@@ -11,7 +11,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1
   # GET /posts/1.json
-  def show
+  def show    #   before_action :set_post, only: [:show, :edit, :update, :destroy]  it will run this action so go look at set_pose
   end
 
   # GET /posts/new
@@ -20,11 +20,13 @@ class PostsController < ApplicationController
   end
 
   # GET /posts/1/edit
-  def edit
+  def edit   # you can render different pages by specifying a template to this edit template and a route.
   end
 
   def search
-@results = Post.search(params[:q])
+    # raise "Params=#{params.inspect}"  this is a good way to inspect elements.
+    @posts = Post.search(params[:q])
+    render :index
   end
 
   # POST /posts
