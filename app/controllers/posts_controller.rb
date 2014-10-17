@@ -23,6 +23,10 @@ class PostsController < ApplicationController
   def edit
   end
 
+  def search
+@results = Post.search(params[:q])
+  end
+
   # POST /posts
   # POST /posts.json
   def create
