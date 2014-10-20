@@ -10,6 +10,8 @@
   </p>
 <%end%>
 <!-- the above can be a partial and then passed into for the index.html or any pages you want to add in the partial to.  -->
+
+
 <table>
   <thead>
     <tr>
@@ -24,6 +26,9 @@
   </thead>
 
   <tbody>
+    <% if @posts.empty? %>
+    <%= "No Posts" %>
+    <%else%>
     <% @posts.each do |post| %>
       <tr>
         <td><%= post.subject %></td>
@@ -36,6 +41,7 @@
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+    <% end %>
     <% end %>
   </tbody>
 </table>
