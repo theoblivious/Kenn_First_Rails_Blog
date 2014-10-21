@@ -8,7 +8,7 @@ resources :posts do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'posts#landing'
+  root 'posts#landing'  #change this to whatever your landing page shoud be as your root.
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
