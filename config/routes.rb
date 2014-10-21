@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
-resources :posts do
- get 'search', on: :collection  # this allows you to search all through the collections of posts. Since search is a behavior of posts and not a data point.
- end
+  resources :posts do
+    get 'search', on: :collection  # this allows you to search all through the collections of posts. Since search is a behavior of posts and not a data point.
+  end
 
-# get 'posts/filtered' => 'posts#filtered'
+  resources :users do
+    get '/signup', to: 'users#new'
+  end
+
+  # get 'posts/filtered' => 'posts#filtered'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
