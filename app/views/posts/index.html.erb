@@ -27,16 +27,16 @@
 
   <tbody>
     <% if @posts.empty? %>
-    <%= "No Posts" %>
+    <td class="no post"> "No Posts" </td>
     <%else%>
     <% @posts.each do |post| %>
       <tr>
-        <td><%= post.subject %></td>
-        <td><%= post.string %></td>
-        <td><%= post.body %></td>
-        <td><%= post.published_at %></td>
-        <td><%= post.time %></td>
-        <td><%= post.draft_status %></td>
+        <td class="subject"><%= post.subject %></td>
+        <td class="string"><%= post.string %></td>
+        <td class= "body"><%= post.body %></td>
+        <td class= "published_at"><%= post.published_at %></td>
+        <td class= "post_time"><%= post.time %></td>
+        <td class="draft_status"><%= post.draft_status %></td>
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>

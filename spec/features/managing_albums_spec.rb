@@ -1,17 +1,62 @@
 require 'rails_helper'
+def create_my_first_post
+  Post.create(
+    subject: "Random stuff goes here",
+    string: "This is a string",
+    body: "This is the body",
+    published_at: "2014-10-15",
+    time: "2:30",
+    draft_status: "false"
 
-
+  )
+end
 feature "Managing Albums" do  # 'manage' is the CRUD
 
   scenario "A user can visit the index and see that blogs are or aren't there." do
     visit posts_path
 
     expect(page.find('h1')).to have_content(/Listing posts/)
-    expect(page).to have_content("No Posts")
+    expect(page).to have_no_content("No posts")
+  end
+
+  scenario "List all Posts" do
+    post= create_my_first_post
+
+    visit posts_path
+
+
+    expect(page.find('tbody')).to have_content(/Random stuff goes here/)
+    expect(page.find('tbody')).to have_content(/This is a string/)
+    expect(page.find('tbody')).to have_content(/This is the body/)
+    expect(page.find('tbody')).to have_content(/2014-10-15/)
+    expect(page.find('tbody')).to have_content(/2:30/)
+    expect(page.find('tbody')).to have_content(/false/)
+
+
+
+
+  end
+
+  scenario " A user can click the create new button and be directed to a new page with a form." do
+
+    post = create_my_first_post
+
+    visit new_post_path
+
+    fill_in 'Subject', with: 'This is my first post'
+    fill_in 'String', with: 'This is a string'
+    fill_in 'Body', with: 'This is the body'
+    select "2014", from: "post[published_at(1i)]"
+    select "October", from: "post[published_at(2i)]"
+    select "15", from: "post[published_at(3i)]"
+
+    # fill_in 'published at', with: '2014-10-15'
+    fill_in 'Time', with: '2:30'
+    uncheck 'Draft status'
+    click_on 'Create Post'
   end
 
 end
-
 
 
 
