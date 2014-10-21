@@ -3,6 +3,13 @@ class PostsController < ApplicationController
 
   # GET /posts
   # GET /posts.json
+  def landing
+
+  end
+
+
+
+
   def index
 
     @posts = Post.ordered_first_10 #includes(:published_at).order("published_at.created_at desc")
