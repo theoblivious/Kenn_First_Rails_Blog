@@ -39,6 +39,14 @@ feature "Managing Albums" do  # 'manage' is the CRUD
 
   scenario " A user can click the create new button and be directed to a new page with a form." do
 
+
+
+  end
+
+
+  scenario "A user can enter input on the form and click submit, be redirected and then see the new post on the index page." do
+
+
     post = create_my_first_post
 
     visit new_post_path
@@ -55,6 +63,8 @@ feature "Managing Albums" do  # 'manage' is the CRUD
     uncheck 'Draft status'
     click_on 'Create Post'
   end
+
+
 
 end
 
