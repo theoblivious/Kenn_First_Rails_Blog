@@ -1,7 +1,9 @@
-class UsersController < ApplicationController
+require 'pry'
 
+class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
   def index
-    @users=Users.all
+    @users=User.all
   end
 
 
@@ -11,6 +13,7 @@ class UsersController < ApplicationController
 
 
   def create
+
     @user= User.new(user_params)  #Remember User.new is creating a new isntance of the database object but not saving
     if @user.save                  #if it passes all of the parameters, its going to render the user and save else its going back to .new
       redirect_to @user            #save  is a helper method. save is goign to try and save base ond validations
@@ -27,7 +30,6 @@ class UsersController < ApplicationController
 
 
   def show
-
   end
 
 
@@ -49,5 +51,8 @@ class UsersController < ApplicationController
       :password,
       :password_confirmation
     )
+  end
+  def set_user
+    @user = User.find(params[:id])
   end
 end
