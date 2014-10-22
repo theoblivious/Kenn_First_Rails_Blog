@@ -1,0 +1,48 @@
+<h1>Listing </h1>
+<!-- <h2> Search </h2>
+
+<%= form_tag search_posts_path, method: :get do %>
+  <p>
+    <%= text_field_tag :q ,nil,  size: 30, placeholder: "Search For" %>
+  </p>
+  <p>
+    <%= submit_tag "Search_dat" %>
+  </p>
+<%end%> -->
+<!-- the above can be a partial and then passed into for the index.html or any pages you want to add in the partial to.  -->
+
+
+<table>
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>email</th>
+      <th>password</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% if @users.empty? %>
+    <td class="no users"> "No Users" </td>
+    <%else%>
+    <% @users.each do |user| %>
+      <tr>
+        <td class="name"><%= user.name %></td>
+        <td class="string"><%= user.email %></td>
+        <td class= "body"><%= user.password %></td>
+        <td><%= link_to 'Show', user %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Post', new_post_path %> <br>
+<%= link_to 'Create a User here ', new_user_path %> <br>
+
+<%= link_to 'Posts table', posts_path %>

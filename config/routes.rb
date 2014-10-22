@@ -1,14 +1,18 @@
 Rails.application.routes.draw do
-resources :posts do
- get 'search', on: :collection  # this allows you to search all through the collections of posts. Since search is a behavior of posts and not a data point.
- end
+  resources :posts do
+    get 'search', on: :collection  # this allows you to search all through the collections of posts. Since search is a behavior of posts and not a data point.
+  end
 
-# get 'posts/filtered' => 'posts#filtered'
+  resources :users do
+    get '/signup', to: 'users#new'
+  end
+
+  # get 'posts/filtered' => 'posts#filtered'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'posts#landing'
+  root 'posts#landing'  #change this to whatever your landing page shoud be as your root.
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -1,3 +1,4 @@
+require 'pry'
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
@@ -11,7 +12,6 @@ class PostsController < ApplicationController
 
 
   def index
-
     @posts = Post.ordered_first_10 #includes(:published_at).order("published_at.created_at desc")
   end
 
